@@ -1,0 +1,54 @@
+{% load static %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% include 'templates/static/head.html' %}
+    <title>Mi Abuelo - Agregar Gasto</title>
+</head>
+<body>
+    {% include 'templates/navbar.html'%}
+    <div class="container row">
+        <div>
+            <div class="ps-3 ms-5 mt-5">
+                <h1>Agregar gasto</h1>
+            </div>
+            <div class='overflow-hidden container mt-5'>
+                <form action="" method="post" enctype="multipart/form-data"> {% csrf_token %}
+                    <label class="d-block mt-3">{{ form.nombre.label}}</label>
+                    {{ form.nombre }}
+                    <label class="d-block mt-3">{{ form.monto.label}}</label>
+                    {{ form.monto}}
+                    <label class="d-block mt-3">{{ form.categoria.label}}</label>
+                    {{ form.categoria}}
+                    <label class="d-block mt-3">{{ form.cuenta.label}}</label>
+                    {{ form.cuenta}}
+                    <label class="d-block mt-3">{{ form.mes.label}}</label>
+                    {{ form.mes}}
+                    <label class="d-block mt-3">{{ form.comprobante.label}}</label>
+                    {{ form.comprobante }}
+                    <div>
+                        {% if messages %}
+                        <ul class="messages">
+                            {% for message in messages %}
+                            <li{% if message.tags %} class="{{ message.tags }} fw-semibold fs-6 text-success mt-5"{% endif %}>{{ message }}</li>
+                            {% endfor %}
+                        </ul>
+                        {% endif %}
+                    </div>
+                    <button class='boton2 d-block mt-5' type="submit">Editar gasto</button>                      
+                </form>
+                <a class='boton_cancelar d-block mt-3 bg-opacity-75 bg-danger text-decoration-none' href="{% url 'home' %}">Cancelar</a>  
+
+            </div>
+        </div>
+        
+    </div>
+    {% include 'templates/footer.html' %}      
+    {% include 'templates/static/scripts.html' %}
+</body>
+</html>
+{% endblock content %}

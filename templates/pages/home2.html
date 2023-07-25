@@ -1,0 +1,136 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% include 'static/head.html'%}
+    <title>Mi abuelo - Home</title>
+</head>
+<body class='w-100'>
+    {% include 'templates/navbar.html' %}
+
+    <!--JUBILACION TOTAL Y RESTANTE-->
+    <div class="container mt-5">
+        <div class="d-flex justify-content-around row">
+            <div class="col-11">
+                <div class="row bg-secondary bg-opacity-50 rounded-3 pb-1">
+                    <p class="col-6 col-md-6 mt-3 total">Jubilacion total:</p>
+                    <p class="col-6 col-md-6 mt-3 text-end total">{{jub_mes}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="d-flex justify-content-around row">
+            <div class="col-11">
+                <div class="row restante">
+                    <p class="col-7 mt-3">Jubilacion restante:</p>
+                    <b class="col-5 mt-3 text-end overflow-hidden">{{restante}}</b>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mt-5 mb-5">
+        <div class="d-flex row justify-content-between">
+            <h2 class="col-6">Selecciona un mes:</h2>
+            <form method="post" class="col-6  text-end">{% csrf_token %}
+                <select name="mes" id="meses">
+                    <option value="E">Enero</option>
+                    <option value="F">Febrero</option>
+                    <option value="M">Marzo</option>
+                    <option value="A">Abril</option>
+                    <option value="m">Mayo</option>
+                    <option value="J">Junio</option>
+                    <option value="j">Julio</option>
+                    <option value="a">Agosto</option>
+                    <option value="S">Septiembre</option>
+                    <option value="O">Octubre</option>
+                    <option value="N">Noviembre</option>
+                    <option value="D">Diciembre</option>
+                </select>
+                <button type="submit" class="boton2">Buscar</button>
+            </form>
+        </div>
+    </div>
+
+    <!--GASTOS POR SEPARADO-->
+    <div>
+        <div class="container mt-4">
+            <div class="border-bottom border-dark d-flex justify-content-between align-content-center">
+                    <h2 class="ms-2">Gastos de 
+                        {% if gasto_mes == 'E' %}
+                        Enero
+                        {% elif  gasto_mes == "F"%}
+                        Febrero
+                        {%elif  gasto_mes == "M"%}
+                        Marzo
+                        {%elif  gasto_mes == "A"%}
+                        Abril
+                        {%elif  gasto_mes == "m"%}
+                        Mayo
+                        {%elif  gasto_mes == "J"%}
+                        Junio
+                        {%elif  gasto_mes == "j"%}
+                        Julio
+                        {%elif  gasto_mes == "a"%}
+                        Agosto
+                        {%elif gasto_mes == "S"%}
+                        Septiembre
+                        {%elif gasto_mes == "O"%}
+                        Octubre
+                        {%elif gasto_mes == "N"%}
+                        Noviembre
+                        {%elif gasto_mes == "D"%}
+                        Diciembre
+                        {% endif %}
+                    </h2>
+ 
+                <a href="{% url 'agregar' %}" class="text-decoration-none px-3 fs-1 text-end">+</a>
+            </div>
+        </div>
+        <div class="container ">
+            <div class="container-fluid mt-3">
+                {% for gasto in gastos %}
+                <div class="row">
+                    <p class="col-8">{{gasto.nombre}}</p>
+                    <p class="col-4 text-end">${{gasto.monto}}</p>
+                </div>
+                {% endfor %}
+                <div class="row fw-bold fs-5">
+                    <p class="col-6 ">Total</p>
+                    <p class="col-6 text-end ">${{gastos_total}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!--CAJAS DE COMPROBANTES-->
+    <div class="mb-4">
+        <div class="container mt-5">
+            <div class="border-bottom border-dark"><h2 class="ms-2">Comprobantes</h2></div>
+        </div>
+        <div class="container p-3">
+
+            {% for gasto in gastos %}
+            <a href="{% url 'detalle' gasto.id %}" class="d-flex justify-content-around row mt-3 text-decoration-none" >
+                <div class="rounded-2 border border-dark col-7 col-sm-6 col-md-5 col-lg-4 p-0 mt-3">
+                    <img class="imagen rounded-top-2" src="{{ gasto.comprobante.url }}" alt="{{gasto.nombre}}">
+                    
+                    <div class="caja_texto rounded-bottom-2">
+                        <div class="fs-4">
+                            <p class="text-white m-0">{{gasto.nombre}}</p>
+                            <p class="text-black">${{gasto.monto}}</p>
+                        </div>
+                    </div>
+                </div>
+            </a>
+            {% endfor %}
+
+        </div>
+    </div>
+    
+    {% include 'templates/footer.html' %}
+{% include "templates/static/scripts.html" %}
+</body>
+</html>
