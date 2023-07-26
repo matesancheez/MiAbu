@@ -16,6 +16,7 @@ SECRET_KEY = "au_mi28v+gh&mk#fr2f%yq)rw#4cz*nbecj)vdyxjyw3ng9@hf"
 DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
+CSRF_TRUSTED_ORIGINS = ["https://miabu-production.up.railway.app"]
 
 
 # Application definition
