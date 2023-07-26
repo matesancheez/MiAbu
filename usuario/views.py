@@ -5,6 +5,8 @@ from usuario.models import Gasto, Jubilacion
 from django.db.models import Sum
 from django.contrib import messages
 from .forms import GastoForm
+from django.db.models import Q
+
 
 
 class view_detalle(DetailView):
@@ -16,6 +18,9 @@ class view_detalle(DetailView):
 def view_home(request):
     jubilacion = Jubilacion.objects.all()
     jubilacion_int = Jubilacion.objects.aggregate(total=Sum("total"))["total"]
+
+    gastos2 = Gasto.objects.filter(cuenta='J')
+    total_gastos2 = gastos2.aggregate(total=Sum("monto"))["total"]
 
     gastos = Gasto.objects.all()
     total_gastos = Gasto.objects.aggregate(total=Sum("monto"))["total"]
@@ -31,7 +36,10 @@ def view_home(request):
     if jubilacion_int == None:
         jubilacion_int = 0
 
-    jubilacion_restante = jubilacion_int - total_gastos
+    jubilacion_restante = jubilacion_int - total_gastos2
+    gastos_jubilacion = total_gastos2
+    ajenos = total_gastos - total_gastos2
+
 
     return render(
         request,
@@ -39,8 +47,10 @@ def view_home(request):
         {
             "gastos_total": total_gastos,
             "gastos": gastos,
-            "jubilacion": jubilacion_int,
+            "jub_mes": jubilacion_int,
+            "jubilacion": gastos_jubilacion,
             "restante": jubilacion_restante,
+            "ajenos":ajenos
         },
     )
 
@@ -49,6 +59,9 @@ def view_home(request):
 def view_home2(request, mes):
     gastos_mes = Gasto.objects.filter(mes=mes)
     total_gastos_mes = gastos_mes.aggregate(total=Sum("monto"))["total"]
+
+    gastos_mes2 = Gasto.objects.filter(Q(mes=mes) & Q(cuenta='J'))
+    total_gastos_mes2 = gastos_mes2.aggregate(total=Sum("monto"))["total"]
 
     jubilacion = Jubilacion.objects.all()
     jubilacion_mes = Jubilacion.objects.filter(mes=mes)
@@ -62,10 +75,15 @@ def view_home2(request, mes):
     if total_gastos_mes == None:
         total_gastos_mes = 0
 
+    if total_gastos_mes2 == None:
+        total_gastos_mes = 0
+
     if jubilacion_int == None:
         jubilacion_int = 0
 
-    restante = jubilacion_int - total_gastos_mes
+    restante = jubilacion_int - total_gastos_mes2
+    gastos_jubilacion = total_gastos_mes2
+    ajenos = total_gastos_mes - total_gastos_mes2
 
     return render(
         request,
@@ -77,6 +95,9 @@ def view_home2(request, mes):
             "restante": restante,
             "jub_mes": jubilacion_int,
             "gasto_mes": mes,
+            "gasto2": gastos_mes2,
+            "ajenos": ajenos,
+            "gastos_jubilacion": gastos_jubilacion
         },
     )
 

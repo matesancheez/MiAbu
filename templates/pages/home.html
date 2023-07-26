@@ -18,15 +18,35 @@
             <div class="col-11">
                 <div class="row bg-secondary bg-opacity-50 rounded-3 pb-1">
                     <p class="col-6 col-md-6 mt-3 total">Jubilacion total:</p>
-                        <p class="col-6 col-md-6 mt-3 text-end total">{{jubilacion}}</p>
+                    <p class="col-6 col-md-6 mt-3 text-end total">${{jub_mes}}</p>
                 </div>
             </div>
         </div>
+
+        <div class="d-flex justify-content-around row mt-3">
+            <div class="col-11">
+                <div class="row bg-secondary bg-opacity-50 rounded-3 pb-1">
+                    <p class="col-6 col-md-6 mt-3 total">Gastos Ajenos:</p>
+                    <p class="col-6 col-md-6 mt-3 text-end total">${{ajenos}}</p>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="d-flex justify-content-around row">
+            <div class="col-11">
+                <div class="row restante">
+                    <p class="col-7 mt-3">Gastos Jubilacion:</p>
+                    <b class="col-5 mt-3 text-end overflow-hidden">${{jubilacion}}</b>
+                </div>
+            </div>
+        </div>
+
         <div class="d-flex justify-content-around row">
             <div class="col-11">
                 <div class="row restante">
                     <p class="col-7 mt-3">Jubilacion restante:</p>
-                    <b class="col-5 mt-3 text-end overflow-hidden">{{restante}}</b>
+                    <b class="col-5 mt-3 text-end overflow-hidden">${{restante}}</b>
                 </div>
             </div>
         </div>
@@ -59,7 +79,7 @@
     <div>
         <div class="container mt-4">
             <div class="border-bottom border-dark d-flex justify-content-between align-content-center">
-                <h2 class="ms-2">Gastos</h2>
+                <h2 class="ms-2">Gastos Anuales:</h2>
                 <a href="{% url 'agregar' %}" class="text-decoration-none px-3 fs-1 text-end">+</a>
             </div>
         </div>

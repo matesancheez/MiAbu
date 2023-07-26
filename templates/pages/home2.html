@@ -16,15 +16,35 @@
             <div class="col-11">
                 <div class="row bg-secondary bg-opacity-50 rounded-3 pb-1">
                     <p class="col-6 col-md-6 mt-3 total">Jubilacion total:</p>
-                    <p class="col-6 col-md-6 mt-3 text-end total">{{jub_mes}}</p>
+                    <p class="col-6 col-md-6 mt-3 text-end total">${{jub_mes}}</p>
                 </div>
             </div>
         </div>
+
+        <div class="d-flex justify-content-around row mt-3">
+            <div class="col-11">
+                <div class="row bg-secondary bg-opacity-50 rounded-3 pb-1">
+                    <p class="col-6 col-md-6 mt-3 total">Gastos Ajenos:</p>
+                    <p class="col-6 col-md-6 mt-3 text-end total">${{ajenos}}</p>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="d-flex justify-content-around row">
+            <div class="col-11">
+                <div class="row restante">
+                    <p class="col-7 mt-3">Gastos Jubilacion:</p>
+                    <b class="col-5 mt-3 text-end overflow-hidden">${{gastos_jubilacion}}</b>
+                </div>
+            </div>
+        </div>
+
         <div class="d-flex justify-content-around row">
             <div class="col-11">
                 <div class="row restante">
                     <p class="col-7 mt-3">Jubilacion restante:</p>
-                    <b class="col-5 mt-3 text-end overflow-hidden">{{restante}}</b>
+                    <b class="col-5 mt-3 text-end overflow-hidden">${{restante}}</b>
                 </div>
             </div>
         </div>
@@ -50,6 +70,9 @@
                 </select>
                 <button type="submit" class="boton2">Buscar</button>
             </form>
+            <div class="d-flex justify-content-center mt-4">
+                <a href={% url 'home' %} class="bg-success rounded-3 text-center w-75 text-decoration-none text-white py-1 fs-5">Ver anual</a>
+            </div>
         </div>
     </div>
 
@@ -119,7 +142,21 @@
                     
                     <div class="caja_texto rounded-bottom-2">
                         <div class="fs-4">
-                            <p class="text-white m-0">{{gasto.nombre}}</p>
+                            <p class="text-white m-0">
+                                {{gasto.nombre}} 
+                                - 
+                                {% if gasto.cuenta == 'J' %}
+                                Jubulacion
+                                {% elif  gasto.cuenta == "V"%}
+                                Veronica
+                                {%elif  gasto.cuenta == "M"%}
+                                Monica
+                                {%elif  gasto.cuenta == "G"%}
+                                Gerardo
+                                {%elif  gasto.cuenta == "W"%}
+                                Walter
+                                {% endif %}
+                                </p>
                             <p class="text-black">${{gasto.monto}}</p>
                         </div>
                     </div>
