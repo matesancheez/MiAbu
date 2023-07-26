@@ -80,7 +80,7 @@ def view_home2(request, mes):
         },
     )
 
-
+@login_required
 def eliminar_gasto(request, pk):
     gasto = Gasto.objects.get(pk=pk)
     gasto.delete()
@@ -122,5 +122,5 @@ class agregar_gasto(CreateView):
         return response
 
 
-class error_404(TemplateView):
-    template_name = "errors/404.html"
+def error_404(request, exception):
+    return render(request, 'erorrs/404.html', status=404)
