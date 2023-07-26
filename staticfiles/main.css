@@ -200,7 +200,6 @@ footer div{
     margin: 0px;
     text-transform: uppercase;
     background: url('../staticfiles/text.png');
-    -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-size: cover;
     background-position: center;
