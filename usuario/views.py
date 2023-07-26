@@ -1,9 +1,9 @@
-from django.shortcuts import get_object_or_404, redirect, render
-from django.db.models import Sum
 from django.views.generic import CreateView, DetailView, TemplateView, UpdateView
-from usuario.models import Gasto, Jubilacion
-from django.contrib import messages
+from django.shortcuts import get_object_or_404, redirect, render
 from django.contrib.auth.decorators import login_required
+from usuario.models import Gasto, Jubilacion
+from django.db.models import Sum
+from django.contrib import messages
 from .forms import GastoForm
 
 

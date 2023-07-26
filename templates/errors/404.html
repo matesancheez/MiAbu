@@ -1,11 +1,22 @@
-<!-- 404.html -->
+{% load static %}
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-    <title>Página no encontrada</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% include 'static/head.html' %}
+    <title>Mi Abu - Error 404</title>
 </head>
 <body>
-    <h1>Error 404 - Página no encontrada</h1>
-    <p>Lo sentimos, la página que estás buscando no ha sido encontrada.</p>
+    {% include 'navbar.html' %}
+    <div class="d-flex justify-content-center align-content-center">
+        <div class="mt-5 p-5 text-center w-75">
+            <p class="numero_style">404</p>
+            <h2 class="fw-bold">Página no encontrada</h2>
+            <h3 class="text-secondary">Lo sentimos, la página que estás buscando no ha sido encontrada o fue eliminada.</h3>
+        </div>
+    </div>
+    <div class="position-absolute bottom-0 w-100">{% include 'footer.html' %}</div>
+    {% include 'static/scripts.html' %}
 </body>
 </html>

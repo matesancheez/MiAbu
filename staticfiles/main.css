@@ -161,3 +161,12 @@ footer div{
     height: auto;
     object-fit: cover;
 }
+
+
+/*Eror 404 page*/
+
+
+.numero_style{
+  font-size: 100px;
+  font-weight: 900;
+}
