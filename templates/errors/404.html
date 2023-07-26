@@ -1,11 +1,32 @@
-<!-- 404.html -->
 <!DOCTYPE html>
-<html>
+<html lang="es">
+
 <head>
-    <title>Página no encontrada</title>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>Mi Abu - 404 Error</title>
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:500" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Titillium+Web:700,900" rel="stylesheet">
+
+	<link type="text/css" rel="stylesheet" href="css/style.css" />
+
 </head>
+
 <body>
-    <h1>Error 404 - Página no encontrada</h1>
-    <p>Lo sentimos, la página que estás buscando no ha sido encontrada.</p>
+
+	<div id="notfound">
+		<div class="notfound">
+			<div class="notfound-404">
+				<h1>404</h1>
+			</div>
+			<h2>Oops! Esta Pagina No Pudo Ser Encontrada</h2>
+			<p>Perdon pero la pagina que estas buscando no existe, o fue eliminada.</p>
+			<a href="{% templates 'home'%}">Ir a Home</a>
+		</div>
+	</div>
+
 </body>
+
 </html>

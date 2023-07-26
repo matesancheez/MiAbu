@@ -5,6 +5,8 @@ from usuario.models import Gasto, Jubilacion
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .forms import GastoForm
+from django.views.defaults import page_not_found
+
 
 
 class view_detalle(DetailView):
@@ -122,5 +124,7 @@ class agregar_gasto(CreateView):
         return response
 
 
-class error_404(TemplateView):
-    template_name = "errors/404.html"
+ 
+class mi_error_404(TemplateView):
+ 
+    template_name ='templates/errors/404.html'

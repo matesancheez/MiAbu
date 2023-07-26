@@ -23,6 +23,8 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, re_path
 from django.views.static import serve
+from django.conf.urls import handler404
+ 
 
 urlpatterns = [
     path("admin/", admin.site.urls),
@@ -35,6 +37,8 @@ urlpatterns = [
     path("home/<str:mes>/", view_home2 ,name="home2"),
     path("detalle/<pk>", view_detalle.as_view(), name="detalle")
 ]
+
+handler404 = mi_error_404.as_view()
 
 urlpatterns += [
     re_path(r'^media/(?P<path>.*)$', serve, {
