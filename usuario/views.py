@@ -79,7 +79,7 @@ def view_home2(request, mes):
         total_gastos_mes = 0
 
     if total_gastos_mes2 == None:
-        total_gastos_mes = 0
+        total_gastos_mes2 = 0
 
     if jubilacion_int == None:
         jubilacion_int = 0
