@@ -33,6 +33,9 @@ def view_home(request):
     if total_gastos == None:
         total_gastos = 0
 
+    if total_gastos2 == None:
+        total_gastos2 = 0
+
     if jubilacion_int == None:
         jubilacion_int = 0
 
