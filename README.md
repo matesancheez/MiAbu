@@ -1,6 +1,6 @@
 # Mi Abu 
 
-* MiAbu ![img](./static/baston.ico)
+![img](./static/baston.ico)
 
 Es una aplicación diseñada para ayudar a gestionar de manera transparente los gastos de la jubilación de tus seres queridos. Esta herramienta simplifica el proceso de registrar y controlar los gastos realizados por tu abuelo, asegurando que cada gasto quede registrado correctamente junto con la cuenta de la cual se extrajo el dinero y un comprobante que respalde la transacción.
 
