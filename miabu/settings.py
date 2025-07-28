@@ -69,7 +69,7 @@ WSGI_APPLICATION = "miabu.wsgi.application"
 DATABASES = {
     'default': dj_database_url.config(
         # Replace this value with your local database's connection string.
-        default='postgresql://miabu_postgre_db_user:eE6JSleWULEyBaT67piqr1b9P9p8gPK2@dpg-d23v5ee3jp1c73ae3h6g-a.oregon-postgres.render.com/miabu_postgre_db',
+        default='postgresql://miabu_postgre_db_user:TzlP0QuhNmSeGyDV9vZvmlDlYm2XaLjP@dpg-d23vn68gjchc73c7ood0-a.oregon-postgres.render.com/miabu_postgre_db_k7u0',
         conn_max_age=600
     )
 }
