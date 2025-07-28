@@ -11,13 +11,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "au_mi28v+gh&mk#fr2f%yq)rw#4cz*nbecj)vdyxjyw3ng9@hf"
+SECRET_KEY = os.environ.get("SECRET_KEY", "fallback-insecure-key")
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
 ALLOWED_HOSTS = ["*"]
-CSRF_TRUSTED_ORIGINS = ["https://miabu-production.up.railway.app"]
 
 
 # Application definition
@@ -69,7 +69,7 @@ WSGI_APPLICATION = "miabu.wsgi.application"
 DATABASES = {
     'default': dj_database_url.config(
         # Replace this value with your local database's connection string.
-        default='postgresql://miabu_postgre_db_user:TzlP0QuhNmSeGyDV9vZvmlDlYm2XaLjP@dpg-d23vn68gjchc73c7ood0-a.oregon-postgres.render.com/miabu_postgre_db_k7u0',
+        default='postgresql://mysite:eDYB5B35rrBQpPUxlht6X4d45RBdrqlL@dpg-d240alfgi27c738gob7g-a.oregon-postgres.render.com/mysite_irmd',
         conn_max_age=600
     )
 }
