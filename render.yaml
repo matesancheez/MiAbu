@@ -1,0 +1,22 @@
+databases:
+  - name: miabu-db
+    plan: free
+    databaseName: miabu_postgre_db
+    user: miabu_postgre_db_user
+
+services:
+  - type: web
+    plan: free
+    name: miabu
+    runtime: python
+    buildCommand: './build.sh'
+    startCommand: 'python -m gunicorn miabu.asgi:application -k uvicorn.workers.UvicornWorker'
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: mysitedb
+          property: postgresql://miabu_postgre_db_user:eE6JSleWULEyBaT67piqr1b9P9p8gPK2@dpg-d23v5ee3jp1c73ae3h6g-a/miabu_postgre_db
+      - key: SECRET_KEY
+        generateValue: true
+      - key: WEB_CONCURRENCY
+        value: 4
