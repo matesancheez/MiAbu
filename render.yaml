@@ -1,20 +1,20 @@
 databases:
-  - name: miabu-db
+  - name: mysitedb
     plan: free
-    databaseName: miabu_postgre_db
-    user: miabu_postgre_db_user
+    databaseName: mysite
+    user: mysite
 
 services:
   - type: web
     plan: free
-    name: miabu
+    name: mysite
     runtime: python
     buildCommand: './build.sh'
-    startCommand: 'python -m gunicorn miabu.asgi:application -k uvicorn.workers.UvicornWorker'
+    startCommand: 'python -m gunicorn mysite.asgi:application -k uvicorn.workers.UvicornWorker'
     envVars:
       - key: DATABASE_URL
         fromDatabase:
-          name: miabu-db
+          name: mysitedb
           property: connectionString
       - key: SECRET_KEY
         generateValue: true
