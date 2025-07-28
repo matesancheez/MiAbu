@@ -15,7 +15,7 @@ services:
       - key: DATABASE_URL
         fromDatabase:
           name: miabu-db
-          property: postgresql://miabu_postgre_db_user:eE6JSleWULEyBaT67piqr1b9P9p8gPK2@dpg-d23v5ee3jp1c73ae3h6g-a/miabu_postgre_db
+          property: connectionString
       - key: SECRET_KEY
         generateValue: true
       - key: WEB_CONCURRENCY
