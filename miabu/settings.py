@@ -1,6 +1,7 @@
 
 import os
 from pathlib import Path
+import dj_database_url 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -66,16 +67,12 @@ WSGI_APPLICATION = "miabu.wsgi.application"
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.postgresql",
-        "NAME": "railway",
-        "USER":"postgres",
-        "PASSWORD":"VbP2VgYx0ooXSeMUjXwT",
-        "HOST":"containers-us-west-158.railway.app",
-        "PORT":"6812"
-    }
+    'default': dj_database_url.config(
+        # Replace this value with your local database's connection string.
+        default='postgresql://miabu_postgre_db_user:eE6JSleWULEyBaT67piqr1b9P9p8gPK2@dpg-d23v5ee3jp1c73ae3h6g-a.oregon-postgres.render.com/miabu_postgre_db',
+        conn_max_age=600
+    )
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
